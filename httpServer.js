@@ -1,12 +1,12 @@
 'use strict';
 
 var http = require('http');
-var route = require('./router');
+var route = require('./lib/router');
 
 var routes = {};
 routes['magic'] = route;
 
-var server = http.createServer(function(req, res){
+var server = http.createServer(function(req, res) {
 	var pathBits = req.url.split('/');
 	if(typeof(routes[pathBits[1]]) === 'function') {
 		routes[pathBits[1]](req, res);
@@ -14,7 +14,6 @@ var server = http.createServer(function(req, res){
 		res.writeHead(404, {
 			'Content-Type': 'application/json'
 		});
-
 		res.write(JSON.stringify({msg: 'page not found'}));
 		res.end();
 	}
