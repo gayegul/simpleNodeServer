@@ -1,2 +1,3 @@
 # simpleNodeServer
-Node server with simple persistance
+
+A Node server with simple persistance
